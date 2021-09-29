@@ -1,0 +1,27 @@
+---
+title: "p8105_hw1_tg2753"
+author: "Tianchuan Gao"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+```
+
+## Problem 1
+
+
+
+```{r cars}
+
+```
+
+## Problem 2
+
+
+
+```{r pressure, echo=FALSE}
+
+```
+
+
