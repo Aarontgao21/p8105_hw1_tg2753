@@ -9,19 +9,69 @@ library(tidyverse)
 ```
 
 ## Problem 1
-
-
-
-```{r cars}
-
+Create a data frame comprised of:  
+- a random sample of size 10 from a standard Normal distribution  
+- a logical vector indicating whether elements of the sample are greater than 0  
+- a character vector of length 10  
+- a factor vector of length 10, with 3 different factor “levels”  
+```{r create data frame}
+df = tibble(
+  random_sample = rnorm(10),
+  logical_vec = random_sample > 0,
+  character_vec = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j"),
+  factor_vec = c("bad", "bad", "bad", "mid", "mid", "mid","mid", "good", "good", "good")
+    )
 ```
+
+take the mean of each variable in the dataframe
+```{r take mean, echo=TRUE}
+mean(pull(df, random_sample))
+mean(pull(df, logical_vec))
+mean(pull(df, character_vec))
+mean(pull(df, factor_vec))
+```
+
+We can see from the above results that we can take mean for numerical and logical variables while not for character or factor variables
+
+```{r,eval=FALSE}
+as.numeric(pull(df, logical_vec))
+as.numeric(pull(df, character_vec))
+as.numeric(pull(df, factor_vec))
+```
+I can convert logical variables into numerical outcomes 0 or 1.  
+But I cannot convert character or factor variables into numerical variables.  
+This helps explain why I cannot take the mean for character or factor variables.  
 
 ## Problem 2
 
-
-
-```{r pressure, echo=FALSE}
-
+Load Dataset
+```{r}
+data("penguins", package = "palmerpenguins")
+```
+Write a short description of the penguins dataset including:  
+-the data in this dataset, including names / values of important variables 
+```{r}
+summary(penguins)
 ```
 
+-the size of the dataset (using nrow and ncol)  
+```{r}
+nrow(penguins)
+ncol(penguins)
+```
+
+-the mean flipper length  
+```{r}
+mean(pull(penguins, flipper_length_mm),na.rm=TRUE)
+```
+
+Make a scatterplot of flipper_length_mm (y) vs bill_length_mm (x); color points using the species variable
+```{r tidy=TRUE}
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+```
+
+Export your first scatterplot to your project directory using ggsave
+```{r}
+ggsave("scatter_plot.pdf", height = 4, width = 6)
+```
 
