@@ -55,18 +55,13 @@ summary(penguins)
 ```
 
 -the size of the dataset (using nrow and ncol)  
-```{r}
-nrow(penguins)
-ncol(penguins)
-```
+the dataset has `r nrow(penguins)` rows, `r ncol(penguins)` columns.
 
 -the mean flipper length  
-```{r}
-mean(pull(penguins, flipper_length_mm),na.rm=TRUE)
-```
+the mean of the flipper length is `r mean(pull(penguins,flipper_length_mm), na.rm=TRUE)` months.
 
 Make a scatterplot of flipper_length_mm (y) vs bill_length_mm (x); color points using the species variable
-```{r tidy=TRUE}
+```{r}
 ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
 ```
 
